@@ -1,4 +1,4 @@
-import examplepackagefb1258.wisdom as wisdom
+import packageforteam5.wisdom as wisdom
 
 
 def main():
