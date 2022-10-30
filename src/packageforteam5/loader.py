@@ -5,7 +5,7 @@ import default_path as path
 
 
 @staticmethod
-def load(key, default_value=None, path=path.DEFAULT_PATH):
+def load(key, default_value=None, path=path.DEFAULT_PATH_READ):
     """_summary_
 
     Args:

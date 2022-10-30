@@ -4,27 +4,28 @@ import os
 from os.path import dirname, join
 
 DEFAULT_PATH_SAVE = join(dirname(dirname(__file__)), 'data', 'save.json')
-DEFAULT_DIR_READ = join(dirname(dirname(__file__)), 'data', 'save.json')
+DEFAULT_PATH_READ = join(dirname(dirname(__file__)), 'data', 'save.json')
 
 
-@staticmethod
+# @staticmethod
 def setDefaultPath(operation, path):
     """_summary_
 
     Args:
-        key (string): the key in the json file to load
-        default_value (object, optional): The default value to return if the key or the file does not exist. Defaults to None.
-        path (string, optional): the path of the saved Json file to load. Defaults to DEFAULT_PATH.
+        operation (string): Indicates which path to update (write/read) 
+        path (string): the new path to save/write, will be the new value of DEFAULT_PATH_SAVE/DEFAULT_PATH_READ
 
     Returns:
-        object: the value of the key in the json file, or the default value if the key or the file does not exist
+        string: indicates if the modification process success or not
     """
-    global DEFAULT_PATH_SAVE, DEFAULT_DIR_READ
+    global DEFAULT_PATH_SAVE, DEFAULT_PATH_READ
     if not os.path.exists(path):
-        return error
+        return "Unable to Update, Path Does Not Exist"
     elif operation == "r":
-        DEFAULT_DIR_READ = path
+        DEFAULT_PATH_READ = path
+        return "Update Read File Path Successfully"
     elif operation == "w":
         DEFAULT_PATH_SAVE = path
+        return "Update Write File Path Successfully"
     else:
-        return error
+        return "Unable to Update, Wrong Operation"
