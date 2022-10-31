@@ -1,11 +1,11 @@
 import json
 import os
 from os.path import dirname, join
+import default_path as path
 
-DEFAULT_PATH = join(dirname(dirname(__file__)), 'data', 'save.json')
 
 @staticmethod
-def load(key, default_value=None, path=DEFAULT_PATH):
+def load(key, default_value=None, path=path.DEFAULT_PATH_READ):
     """_summary_
 
     Args:
