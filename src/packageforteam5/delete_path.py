@@ -19,13 +19,16 @@ def delete(key, default_value=None, path=path.DEFAULT_PATH_READ):
         return default_value
     with open(path) as f:
         data = json.load(f)
-        data.pop(key)
-        print("Successfully delete: ",key)
-        with open(path,'w') as file:
-            file.write(json.dumps(data, indent=4))
-        return data
-    if(value == None):
+        for k in data.keys():
+            if key == k:
+                data.pop(key)
+                print("Successfully delete: ",key)
+                with open(path,'w') as file:
+                    file.write(json.dumps(data, indent=4))
+                    return data
+        print("Error! No such key exists.")
         return default_value
+    
 
 
     

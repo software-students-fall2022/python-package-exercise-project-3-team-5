@@ -24,6 +24,7 @@ def main():
 
   print(delete_path.delete("test"))
   print(delete_path.delete("quiz"))
+  print(delete_path.delete("hello"))
 
   print(default_path.DEFAULT_PATH_READ, default_path.DEFAULT_PATH_SAVE)
 if __name__ == '__main__':
