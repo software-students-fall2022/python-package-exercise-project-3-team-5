@@ -3,7 +3,7 @@ import os
 from os.path import dirname, join
 import default_path as path
 
-def delete(key, default_value=None, path=path.DEFAULT_PATH_READ):
+def delete(key, default_value=None, overridden_path=None):
     """_summary_
 
     Args:
@@ -14,6 +14,10 @@ def delete(key, default_value=None, path=path.DEFAULT_PATH_READ):
     Returns:
         object: the value of the key in the json file, or the default value if the key or the file does not exist
     """
+    if (overridden_path == None or overridden_path == ""):
+        overridden_path = path.DEFAULT_PATH_READ
+    print("Default", overridden_path)
+    print("Default2", path.DEFAULT_PATH_READ)
     if not os.path.exists(path):
         print("There is no such path")
         return default_value
