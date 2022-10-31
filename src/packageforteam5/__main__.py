@@ -16,10 +16,10 @@ def main():
   print(loader.load("test"))
   print(loader.load("notexist", "default"))
 
-  print(default_path.setDefaultPath("r", join(dirname(dirname(__file__)), 'data', 'test.json')))
-  print(default_path.setDefaultPath("w", join(dirname(dirname(__file__)), 'data', 'test.json')))
-  print(default_path.setDefaultPath("r", join(dirname(dirname(__file__)), 'data', 'test1.json')))
-  print(default_path.setDefaultPath("w", join(dirname(dirname(__file__)), 'data', 'test1.json')))
+  print(default_path.setDefaultPath(join(dirname(dirname(__file__)), 'data', 'test.json'), "r"))
+  print(default_path.setDefaultPath(join(dirname(dirname(__file__)), 'data', 'test.json'), "w"))
+  print(default_path.setDefaultPath(join(dirname(dirname(__file__)), 'data', 'test1.json'), "r"))
+  print(default_path.setDefaultPath(join(dirname(dirname(__file__)), 'data', 'test1.json'), "wr"))
 
   print(default_path.DEFAULT_PATH_READ, default_path.DEFAULT_PATH_SAVE)
 if __name__ == '__main__':
