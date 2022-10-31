@@ -13,10 +13,7 @@ def main():
   if not os.path.exists(os.path.dirname(default_path.DEFAULT_PATH_READ)):
       os.makedirs(os.path.dirname(default_path.DEFAULT_PATH_READ))
 
-  quiz = loader.load("quiz") 
-  quiz.sport.q1.options[0] = "New Option"
-  print(quiz.sport.q1.options[0])
- 
+  #print(loader.load("quiz").sport.q1.options[0])
   print(loader.load("test"))
   print(loader.load("notexist", "default"))
 
@@ -24,12 +21,19 @@ def main():
   print(default_path.setDefaultPath("w", join(dirname(dirname(__file__)), 'data', 'test.json')))
   print(default_path.setDefaultPath("r", join(dirname(dirname(__file__)), 'data', 'test1.json')))
   print(default_path.setDefaultPath("w", join(dirname(dirname(__file__)), 'data', 'test1.json')))
-
+  print(default_path.setDefaultPath("r", join(dirname(dirname(__file__)), 'data', 'test.json')))
+  
   print(delete_path.delete("test"))
   print(delete_path.delete("quiz"))
   print(delete_path.delete("hello"))
 
-  print(default_path.DEFAULT_PATH_READ, default_path.DEFAULT_PATH_SAVE)
+  #print(default_path.DEFAULT_PATH_READ, default_path.DEFAULT_PATH_SAVE)
+  
+  print(default_path.setDefaultPath("r", join(dirname(dirname(__file__)), 'data', 'save_test.json')))
+  print("Default path read: ", default_path.DEFAULT_PATH_READ)
+  quiz = loader.load("quiz")
+  print("Quiz Option: ", quiz.sport.q1.options[0])
+  
 if __name__ == '__main__':
     main()
 
