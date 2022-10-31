@@ -7,6 +7,7 @@ from types import SimpleNamespace
 class NestedNamespace(SimpleNamespace):
     def __init__(self, dictionary, **kwargs):
         super().__init__(**kwargs)
+        
         for key, value in dictionary.items():
             if isinstance(value, dict):
                 self.__setattr__(key, NestedNamespace(value))
@@ -24,7 +25,7 @@ def load(key, default_value=None, path=path.DEFAULT_PATH_READ):
         path (string, optional): the path of the saved Json file to load. Defaults to DEFAULT_PATH.
 
     Returns:
-        object: the value of the key in the json file, or the default value if the key or the file does not exist
+        object: the value of the key in the json file, or the default value if the key or the file does not exist. Use dot notation "." to access nested values.
     """
     if not os.path.exists(path):
         return default_value
@@ -33,4 +34,6 @@ def load(key, default_value=None, path=path.DEFAULT_PATH_READ):
     value = data.get(key, default_value)
     if(value == None):
         return default_value
+    if(not isinstance(value, dict)):
+            return value
     return NestedNamespace(value)
