@@ -13,7 +13,10 @@ def main():
   if not os.path.exists(os.path.dirname(default_path.DEFAULT_PATH_READ)):
       os.makedirs(os.path.dirname(default_path.DEFAULT_PATH_READ))
 
-  print(loader.load("quiz")["sport"]["q1"]["options"][0])
+  quiz = loader.load("quiz") 
+  quiz.sport.q1.options[0] = "New Option"
+  print(quiz.sport.q1.options[0])
+ 
   print(loader.load("test"))
   print(loader.load("notexist", "default"))
 
