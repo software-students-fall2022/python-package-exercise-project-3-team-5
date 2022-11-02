@@ -21,7 +21,11 @@ def setDefaultPath(path, operation="wr"):
     global DEFAULT_PATH_SAVE, DEFAULT_PATH_READ
     if not os.path.exists(path):
         try:
-            path = os.makedirs(path)
+            dir = '\\'.join(path.split('\\')[0:-1])
+            os.makedirs(dir)
+            fp = open(path, 'w')
+            fp.write('{}')
+            fp.close()
         except:
             return error
     if operation == "r":
@@ -31,7 +35,8 @@ def setDefaultPath(path, operation="wr"):
         DEFAULT_PATH_SAVE = path
         return "Update Write File Path Successfully"
     elif operation == "wr":
-        DEFAULT_PATH_READ, DEFAULT_PATH_SAVE = path
+        DEFAULT_PATH_READ= path
+        DEFAULT_PATH_SAVE = path
         return "Update Read and Write File Path Successfully"
     else:
         return "Unable to Update, Wrong Operation"
