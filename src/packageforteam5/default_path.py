@@ -21,13 +21,15 @@ def setDefaultPath(path, operation="wr"):
     global DEFAULT_PATH_SAVE, DEFAULT_PATH_READ
     if not os.path.exists(path):
         try:
-            dir = '\\'.join(path.split('\\')[0:-1])
-            os.makedirs(dir)
+            dir = dirname(path)
+            print("dir=", dir)
+            os.makedirs(dir, exist_ok=True)
             fp = open(path, 'w')
             fp.write('{}')
             fp.close()
         except:
             return error
+
     if operation == "r":
         DEFAULT_PATH_READ = path
         return "Update Read File Path Successfully"
