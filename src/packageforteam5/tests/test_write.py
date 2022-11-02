@@ -11,11 +11,11 @@ import default_path as path
     
 
 def write_valid_data():
-    path.setDefaultPath("w", join(dirname(dirname(dirname(__file__))), 'data', 'write_test.json'))
+    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'write_test.json'), "w")
     write.write("new value", 10)
     newKey = loader.load("new value")
-    print(newKey)
     return newKey
+
 
 def write_valid_data_with_existing_overridden_file():
     write.write("new value", 10, None, join(dirname(dirname(dirname(__file__))), 'data', 'write_test_2.json'))
@@ -23,7 +23,7 @@ def write_valid_data_with_existing_overridden_file():
     return newKey
 
 def write_valid_data_with_nonexisting_default_file():
-    path.setDefaultPath("w", join(dirname(dirname(dirname(__file__))), 'data', 'write_test_3.json'))
+    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'write_test_3.json'), "w")
     write.write("new value", 10)
     newKey = loader.load("new value")
     return newKey
@@ -69,3 +69,4 @@ def test_load_default_value_from_non_existing_data():
 def test_load_existing_data_from_non_existing_file():
     assert load_existing_data_from_non_existing_file() == None
 '''
+

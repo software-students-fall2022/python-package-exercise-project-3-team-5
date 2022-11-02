@@ -1,9 +1,9 @@
 import json
 import os
 from os.path import dirname, join
-import default_path as path
+import default_path
 
-def write(key, value, default_value = None, path=path.DEFAULT_PATH_READ):
+def write(key, value, default_value = None, path=None):
     """_summary_
     Args:
         key (string): the key to add to json file 
@@ -12,6 +12,7 @@ def write(key, value, default_value = None, path=path.DEFAULT_PATH_READ):
     Returns:
         object: 0 if unsuccessful, 1 if successful
     """
+    path=default_path.DEFAULT_PATH_READ
     if not os.path.exists(path):
         print("There is no such path")
         return 0
@@ -20,5 +21,5 @@ def write(key, value, default_value = None, path=path.DEFAULT_PATH_READ):
         data.update({key: value})
     with open(path, "w") as outputFile:
         json.dump(data, outputFile)
-        print("Key value pair added!")
+        # print("Key value pair added!")
         return 1
