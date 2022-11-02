@@ -35,7 +35,10 @@ def load(key, default_value=None, overridden_path=None):
         warnings.warn('I got lost in the woods and could not find the file! I will fallback to the default value!')
         return default_value
     with open(overridden_path) as f:
-        data = json.load(f)
+        try:
+            data = json.load(f)
+        except:
+            return default_value
     value = data.get(key, default_value)
     if(value == None):
         warnings.warn('Where is the key? I will fallback to the default value!')

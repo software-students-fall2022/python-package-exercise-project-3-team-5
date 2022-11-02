@@ -11,12 +11,12 @@ import default_path as path
     
 
 def load_existing_data():
-    path.setDefaultPath("r", join(dirname(dirname(dirname(__file__))), 'data', 'save_test.json'))
+    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save_test.json'))
     quiz = loader.load("quiz")
     return quiz.sport.q1.options[0]
 
 def load_existing_data2():
-    path.setDefaultPath("r", join(dirname(dirname(dirname(__file__))), 'data', 'save_test.json'))
+    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save_test.json'))
     value = loader.load("test")
     return value
 
@@ -25,13 +25,13 @@ def load_existing_data_with_overridden_file():
     return value.GlossDiv.GlossList.GlossEntry.GlossDef.GlossSeeAlso[0]
 
 def load_non_existing_data_from_existing_file():
-    path.setDefaultPath("r", join(dirname(dirname(__file__)), 'data', 'save_test.json'))
+    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save_test.json'))
     quiz = loader.load("non-exist")
     return quiz
     
 def load_default_value_from_non_existing_data():
    
-    path.setDefaultPath("r", join(dirname(dirname(__file__)), 'data', 'non-save_test.json'))
+    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', "subfolder" ,'non-save_test.json'))
     quiz = loader.load("non-exist-2", 100)
     return quiz
 
