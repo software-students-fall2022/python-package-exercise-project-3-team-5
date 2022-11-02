@@ -3,7 +3,7 @@ import os
 from os.path import dirname, join
 import default_path as path
 from types import SimpleNamespace
-
+import warnings
 #reference: https://stackoverflow.com/questions/16279212/how-to-use-dot-notation-for-dict-in-python
 class NestedNamespace(SimpleNamespace):
     def __init__(self, dictionary, **kwargs):
@@ -30,14 +30,18 @@ def load(key, default_value=None, overridden_path=None):
     """
     if(overridden_path == None or overridden_path == ""):
         overridden_path = path.DEFAULT_PATH_READ
-    print("Default", overridden_path)
-    print("Default2", path.DEFAULT_PATH_READ)
+    
     if not os.path.exists(overridden_path):
+        warnings.warn('I got lost in the woods and could not find the file! I will fallback to the default value!')
         return default_value
     with open(overridden_path) as f:
-        data = json.load(f)
+        try:
+            data = json.load(f)
+        except:
+            return default_value
     value = data.get(key, default_value)
     if(value == None):
+        warnings.warn('Where is the key? I will fallback to the default value!')
         return default_value
     if(not isinstance(value, dict)):
             return value

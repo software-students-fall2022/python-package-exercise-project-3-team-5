@@ -8,7 +8,7 @@ DEFAULT_PATH_READ = join(dirname(dirname(__file__)), 'data', 'save.json')
 
 
 # @staticmethod
-def setDefaultPath(operation, path):
+def setDefaultPath(path, operation="wr"):
     """_summary_
 
     Args:
@@ -20,12 +20,23 @@ def setDefaultPath(operation, path):
     """
     global DEFAULT_PATH_SAVE, DEFAULT_PATH_READ
     if not os.path.exists(path):
-        return "Unable to Update, Path Does Not Exist"
-    elif operation == "r":
+        try:
+            dir = '\\'.join(path.split('\\')[0:-1])
+            os.makedirs(dir)
+            fp = open(path, 'w')
+            fp.write('{}')
+            fp.close()
+        except:
+            return error
+    if operation == "r":
         DEFAULT_PATH_READ = path
         return "Update Read File Path Successfully"
     elif operation == "w":
         DEFAULT_PATH_SAVE = path
         return "Update Write File Path Successfully"
+    elif operation == "wr":
+        DEFAULT_PATH_READ= path
+        DEFAULT_PATH_SAVE = path
+        return "Update Read and Write File Path Successfully"
     else:
         return "Unable to Update, Wrong Operation"
