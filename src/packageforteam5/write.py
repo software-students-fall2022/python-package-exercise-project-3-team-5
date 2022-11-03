@@ -17,18 +17,11 @@ def write(key, value, overridden_path=None):
     if(overridden_path == None or overridden_path == ""):
         overridden_path = path.DEFAULT_PATH_SAVE
     
-    dir = '\\'.join(overridden_path.split('\\')[0:-1])
-    if not os.path.exists(dir):
-        try:
-            os.makedirs(dir)
-            fp = open(overridden_path, 'w')
-            fp.write('{}')
-            fp.close()
-        except:
-            return error
-    
     if not os.path.exists(overridden_path):
         try:
+            dir = dirname(overridden_path)
+            print("dir=", dir)
+            os.makedirs(dir, exist_ok=True)
             fp = open(overridden_path, 'w')
             fp.write('{}')
             fp.close()
