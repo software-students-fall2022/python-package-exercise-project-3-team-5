@@ -20,7 +20,7 @@ def init_test():
     t4 = join(dirname(dirname(dirname(__file__))), 'data', 'write_test_4.json')
     delete_file(t4)
     t2 = join(dirname(dirname(dirname(__file__))), 'data', 'write_test_2.json')
-    delete_path.delete(t2, None, "new value")
+    delete_path.delete(t2, "new value")
     t1 = join(dirname(dirname(dirname(__file__))), 'data', 'write_test.json')
     write.write("new value", 1, t1)
 
