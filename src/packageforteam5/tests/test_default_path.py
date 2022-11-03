@@ -9,21 +9,36 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import loader
 import default_path
 
-    
+def delete_file(path):
+    if os.path.exists(path):
+            os.remove(path)
+            
+def init_test():
+    p1 = join(dirname(dirname(dirname(__file__))), 'data', 'test_path_read.json')
+    p2 = join(dirname(dirname(dirname(__file__))), 'data', 'test_path_save.json')
+    p3 = join(dirname(dirname(dirname(__file__))), 'data', 'test_path_save_read.json')
+    p4 = join(dirname(dirname(dirname(__file__))), 'data', 'test_path_no_operation.json')
+    delete_file(p1)
+    delete_file(p2)
+    delete_file(p3)
+    delete_file(p4)    
 
 def set_default_path_read():
+    init_test()
     set_path = default_path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'test_path_read.json'), "r")
     path = default_path.DEFAULT_PATH_READ
     set_back = default_path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save.json'), "r")
     return set_path, path, set_back
 
 def set_default_path_write():
+    init_test()
     set_path = default_path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'test_path_save.json'), "w")
     path = default_path.DEFAULT_PATH_SAVE
     set_back = default_path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save.json'), "w")
     return set_path, path, set_back
 
 def set_default_path_both():
+    init_test()
     set_path = default_path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'test_path_save_read.json'), "wr")
     path_save = default_path.DEFAULT_PATH_SAVE
     path_read = default_path.DEFAULT_PATH_READ
@@ -31,6 +46,7 @@ def set_default_path_both():
     return set_path, path_save, path_read, set_back
 
 def set_default_path_no_operation():
+    init_test()
     set_path = default_path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'test_path_no_operation.json'))
     path_save = default_path.DEFAULT_PATH_SAVE
     path_read = default_path.DEFAULT_PATH_READ
