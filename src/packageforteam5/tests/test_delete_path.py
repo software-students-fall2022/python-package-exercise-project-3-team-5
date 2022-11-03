@@ -2,7 +2,7 @@ import json
 import os
 from os.path import dirname, join
 import sys
-
+import write
 
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -117,11 +117,15 @@ def test_delete_nonexisting_data():
 
 def test_delete_existing_data1():
     assert delete_existing_data1().maths.q1.options[0] == "10"
-def test_delete_existing_data2():
+def test_delete_exting_isting_data2():
     assert delete_existing_data2() == 5  
 
 def test_delete_nonexisting_data2():
     assert delete_nonexisting_data2() == None 
 
 def test_delete_existing_data3():
-    assert delete_existing_data3().GlossDiv.title == "S"
+    ret = delete_existing_data3() #.GlossDiv.title # == "S"
+    #retData = ret.to_dictionary()
+    #write.write("glossary", retData,join(dirname(dirname(dirname(__file__))), 'data', 'save_test_4.json'))
+    assert ret.GlossDiv.title == "S"
+    

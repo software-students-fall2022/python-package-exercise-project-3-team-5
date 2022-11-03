@@ -14,7 +14,12 @@ class NestedNamespace(SimpleNamespace):
                 self.__setattr__(key, NestedNamespace(value))
             else:
                 self.__setattr__(key, value)
+    
+    def to_dictionary(self):
+        # self.__dict__.items() can be either NestedNamespace or other types. 
+        return {key: value.to_dictionary() if isinstance(value, NestedNamespace) else value for key, value in self.__dict__.items()}
 
+    
 
 #@staticmethod
 def load(key, default_value=None, overridden_path=None):

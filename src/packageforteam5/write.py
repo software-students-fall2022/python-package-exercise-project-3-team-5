@@ -3,6 +3,7 @@ import os
 from os.path import dirname, join
 import default_path as path
 from distutils.log import error
+from loader import NestedNamespace
 
 def write(key, value, overridden_path=None):
     """_summary_
@@ -27,7 +28,9 @@ def write(key, value, overridden_path=None):
             fp.close()
         except:
             return error
-    
+    if(isinstance(value, NestedNamespace)):
+        value = value.to_dictionary()
+        
     with open(overridden_path) as f:
         data = json.load(f)
         data.update({key: value})

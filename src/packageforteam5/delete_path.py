@@ -3,21 +3,10 @@ import os
 from os.path import dirname, join
 import default_path as path
 import warnings
-from types import SimpleNamespace
+from loader import NestedNamespace
 
 
-#reference: https://stackoverflow.com/questions/16279212/how-to-use-dot-notation-for-dict-in-python
-class NestedNamespace(SimpleNamespace):
-    def __init__(self, dictionary, **kwargs):
-        super().__init__(**kwargs)
-        
-        for key, value in dictionary.items():
-            if isinstance(value, dict):
-                self.__setattr__(key, NestedNamespace(value))
-            else:
-                self.__setattr__(key, value)
-                
-                
+               
 def delete(key, overridden_path=None):
     """_summary_
 
