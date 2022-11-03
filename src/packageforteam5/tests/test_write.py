@@ -8,29 +8,48 @@ from types import SimpleNamespace
 import write
 import loader
 import default_path as path
+import delete_path
+
+def delete_file(path):
+    if os.path.exists(path):
+         os.remove(path)
     
+def init_test():
+    t3 = join(dirname(dirname(dirname(__file__))), 'data', 'write_test_3.json')
+    delete_file(t3)
+    t4 = join(dirname(dirname(dirname(__file__))), 'data', 'write_test_4.json')
+    delete_file(t4)
+    t2 = join(dirname(dirname(dirname(__file__))), 'data', 'write_test_2.json')
+    delete_path.delete(t2, None, "new value")
+    t1 = join(dirname(dirname(dirname(__file__))), 'data', 'write_test.json')
+    write.write("new value", 1, t1)
 
 def write_valid_data():
-    path.setDefaultPath("w", join(dirname(dirname(dirname(__file__))), 'data', 'write_test.json'))
-    write.write("new value", 10)
+    init_test()
+    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'write_test.json'))
+    write.write("new value", 15)
     newKey = loader.load("new value")
-    print(newKey)
     return newKey
 
 def write_valid_data_with_existing_overridden_file():
-    write.write("new value", 10, None, join(dirname(dirname(dirname(__file__))), 'data', 'write_test_2.json'))
-    newKey = loader.load("new value")
+    init_test()
+    p = join(dirname(dirname(dirname(__file__))), 'data', 'write_test_2.json')
+    write.write("new value", 10, p)
+    newKey = loader.load("new value", None, p)
     return newKey
 
 def write_valid_data_with_nonexisting_default_file():
-    path.setDefaultPath("w", join(dirname(dirname(dirname(__file__))), 'data', 'write_test_3.json'))
+    init_test()
+    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'write_test_3.json'))
     write.write("new value", 10)
     newKey = loader.load("new value")
     return newKey
 
 def write_valid_data_with_nonexisting_overridden_file():
-    write.write("new value", 10, None, join(dirname(dirname(dirname(__file__))), 'data', 'write_test_4.json'))
-    newKey = loader.load("new value")
+    init_test()
+    p = join(dirname(dirname(dirname(__file__))), 'data', 'write_test_4.json')
+    write.write("new value", 10, p)
+    newKey = loader.load("new value", None, p)
     return newKey
 
 
@@ -49,7 +68,7 @@ def load_existing_data_from_non_existing_file():
 
 
 def test_write_valid_data():
-    assert write_valid_data() == 10
+    assert write_valid_data() == 15
     
 def test_write_valid_data_with_existing_overridden_file():
     assert write_valid_data_with_existing_overridden_file() == 10

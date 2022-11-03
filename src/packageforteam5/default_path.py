@@ -19,15 +19,25 @@ def setDefaultPath(path, operation="wr"):
         string: indicates if the modification process success or not
     """
     global DEFAULT_PATH_SAVE, DEFAULT_PATH_READ
-    if not os.path.exists(path):
+    
+    dir = '\\'.join(path.split('\\')[0:-1])
+    if not os.path.exists(dir):
         try:
-            dir = '\\'.join(path.split('\\')[0:-1])
             os.makedirs(dir)
             fp = open(path, 'w')
             fp.write('{}')
             fp.close()
         except:
             return error
+    
+    if not os.path.exists(path):
+        try:
+            fp = open(path, 'w')
+            fp.write('{}')
+            fp.close()
+        except:
+            return error
+    
     if operation == "r":
         DEFAULT_PATH_READ = path
         return "Update Read File Path Successfully"
