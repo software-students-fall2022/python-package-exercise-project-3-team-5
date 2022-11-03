@@ -3,7 +3,21 @@ import os
 from os.path import dirname, join
 import default_path as path
 import warnings
+from types import SimpleNamespace
 
+
+#reference: https://stackoverflow.com/questions/16279212/how-to-use-dot-notation-for-dict-in-python
+class NestedNamespace(SimpleNamespace):
+    def __init__(self, dictionary, **kwargs):
+        super().__init__(**kwargs)
+        
+        for key, value in dictionary.items():
+            if isinstance(value, dict):
+                self.__setattr__(key, NestedNamespace(value))
+            else:
+                self.__setattr__(key, value)
+                
+                
 def delete(key, overridden_path=None):
     """_summary_
 
@@ -34,8 +48,12 @@ def delete(key, overridden_path=None):
                 print("Successfully delete: ",key)
                 with open(overridden_path,'w') as file:
                     file.write(json.dumps(data, indent=4))
-                print(data)
-                return value
+                    
+                if(value == None):
+                     return None
+                if(not isinstance(value, dict)):
+                        return value
+                return NestedNamespace(value)
         warnings.warn("Error! No such key exists.")
         return None
     
