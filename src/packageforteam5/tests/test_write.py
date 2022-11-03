@@ -4,9 +4,10 @@ from os.path import dirname, join
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from types import SimpleNamespace
+
 import write
 import loader
+from loader import NestedNamespace
 import default_path as path
 import delete_path
 
@@ -23,7 +24,8 @@ def init_test():
     delete_path.delete(t2, "new value")
     t1 = join(dirname(dirname(dirname(__file__))), 'data', 'write_test.json')
     write.write("new value", 1, t1)
-
+    write.write("quiz", {"sport":{"q1":{"question":"What is the capital of France?","options":["Paris","London","Berlin","Madrid"],"answer":"Paris"}}}, t1)
+    
 def write_valid_data():
     init_test()
     path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'write_test.json'))
@@ -38,6 +40,14 @@ def write_valid_data_with_existing_overridden_file():
     newKey = loader.load("new value", None, p)
     return newKey
 
+def write_nested_namespace():
+    init_test()
+    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'write_test.json'))
+    value = loader.load("quiz")
+    value.sport.q1.question = "New Question"
+    write.write("quiz", value)
+    return loader.load("quiz").sport.q1.question
+    
 def write_valid_data_with_nonexisting_default_file():
     init_test()
     path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'write_test_3.json'))
@@ -73,6 +83,9 @@ def test_write_valid_data():
 def test_write_valid_data_with_existing_overridden_file():
     assert write_valid_data_with_existing_overridden_file() == 10
 
+def test_write_nested_namespace():
+    assert write_nested_namespace() == "New Question"
+  
 def test_write_valid_data_with_nonexisting_default_file():
     assert write_valid_data_with_nonexisting_default_file() == 10
     

@@ -2,7 +2,7 @@ import json
 import os
 from os.path import dirname, join
 import sys
-
+import write
 
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -116,64 +116,16 @@ def test_delete_nonexisting_data():
     assert delete_nonexisting_data() == None
 
 def test_delete_existing_data1():
-    assert delete_existing_data1() ==  {"sport": {
-            "q1": {
-                "question": "Which one is correct team name in NBA?",
-                "options": [
-                    "New York Bulls",
-                    "Los Angeles Kings",
-                    "Golden State Warriros",
-                    "Huston Rocket"
-                ],
-                "answer": "Huston Rocket"
-            }
-        },
-        "maths": {
-            "q1": {
-                "question": "5 + 7 = ?",
-                "options": [
-                    "10",
-                    "11",
-                    "12",
-                    "13"
-                ],
-                "answer": "12"
-            },
-            "q2": {
-                "question": "12 - 8 = ?",
-                "options": [
-                    "1",
-                    "2",
-                    "3",
-                    "4"
-                ],
-                "answer": "4"
-            }
-        }
-    }
-def test_delete_existing_data2():
+    assert delete_existing_data1().maths.q1.options[0] == "10"
+def test_delete_exting_isting_data2():
     assert delete_existing_data2() == 5  
 
 def test_delete_nonexisting_data2():
     assert delete_nonexisting_data2() == None 
 
 def test_delete_existing_data3():
-    assert delete_existing_data3() == {"title": "example glossary",
-		"GlossDiv": {
-            "title": "S",
-			"GlossList": {
-                "GlossEntry": {
-                    "ID": "SGML",
-					"SortAs": "SGML",
-					"GlossTerm": "Standard Generalized Markup Language",
-					"Acronym": "SGML",
-					"Abbrev": "ISO 8879:1986",
-					"GlossDef": {
-                        "para": "A meta-markup language, used to create markup languages such as DocBook.",
-						"GlossSeeAlso": ["GML", "XML"]
-                    },
-					"GlossSee": "markup"
-                }
-            }
-        }
-    }
+    ret = delete_existing_data3() #.GlossDiv.title # == "S"
+    #retData = ret.to_dictionary()
+    #write.write("glossary", retData,join(dirname(dirname(dirname(__file__))), 'data', 'save_test_4.json'))
+    assert ret.GlossDiv.title == "S"
+    

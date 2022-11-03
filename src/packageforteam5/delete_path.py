@@ -3,7 +3,10 @@ import os
 from os.path import dirname, join
 import default_path as path
 import warnings
+from loader import NestedNamespace
 
+
+               
 def delete(key, overridden_path=None):
     """_summary_
 
@@ -34,8 +37,12 @@ def delete(key, overridden_path=None):
                 print("Successfully delete: ",key)
                 with open(overridden_path,'w') as file:
                     file.write(json.dumps(data, indent=4))
-                print(data)
-                return value
+                    
+                if(value == None):
+                     return None
+                if(not isinstance(value, dict)):
+                        return value
+                return NestedNamespace(value)
         warnings.warn("Error! No such key exists.")
         return None
     
