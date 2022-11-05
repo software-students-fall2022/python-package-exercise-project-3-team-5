@@ -1,1 +1,22 @@
-{"quiz": {"sport": {"q1": {"question": "Which one is correct team name in NBA?", "options": ["New York Bulls", "Los Angeles Kings", "Golden State Warriros", "Huston Rocket"], "answer": "Huston Rocket"}}, "maths": {"q1": {"question": "5 + 7 = ?", "options": ["10", "11", "12", "13"], "answer": "12"}, "q2": {"question": "12 - 8 = ?", "options": ["1", "2", "3", "4"], "answer": "4"}}}, "new value": 10}
+{
+    "Irish Cold Brew": {
+        "mood": 0,
+        "taste": 0,
+        "price": 0
+    },
+    "Caramel Frappuccino": {
+        "mood": 1,
+        "taste": 1,
+        "price": 2
+    },
+    "Iced Espresso": {
+        "mood": 0,
+        "taste": 0,
+        "price": 1
+    },
+    "Iced Caramel Macchiato": {
+        "mood": 1,
+        "taste": 1,
+        "price": 1
+    }
+}

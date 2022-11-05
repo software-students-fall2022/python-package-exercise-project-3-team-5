@@ -1,33 +1,13 @@
 {
-   "Irish Cold Brew": {
-       "mood": "tired",
-       "taste": "bitter",
-       "price": "low"    
-   },
-
-   "Caramel Frappuccino": {
-    "mood": "happy",
-    "taste": "sweet",
-    "price": "high"    
-   },
-
-   "Pink Drink": {
-    "mood": "happy",
-    "taste": "sour",
-    "price": "moderate"    
-   },
-
-   "Iced Espresso": {
-    "mood": "tired",
-    "taste": "bitter",
-    "price": "low"    
-   },
-
-   "Iced Caramel Macchiato": {
-    "mood": "tired",
-    "taste": "sweet",
-    "price": "high"    
-}
-
+    "Irish Cold Brew": {
+        "mood": 0,
+        "taste": 0,
+        "price": 0
+    },
+    "Caramel Frappuccino": {
+        "mood": 1,
+        "taste": 1,
+        "price": 2
+    }
 
 }

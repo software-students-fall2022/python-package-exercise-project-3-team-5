@@ -1,20 +1,22 @@
 {
-    "Dragonfruit": {
-        "mood": "happy",
-        "taste": "sweet",
-        "price": "moderate"    
+    "Irish Cold Brew": {
+        "mood": 0,
+        "taste": 0,
+        "price": 0
     },
-
-    "Black Tea": {
-        "mood": "tired",
-        "taste": "bitter",
-        "price": "low"    
+    "Caramel Frappuccino": {
+        "mood": 1,
+        "taste": 1,
+        "price": 2
     },
-
+    "Iced Espresso": {
+        "mood": 0,
+        "taste": 0,
+        "price": 1
+    },
     "Iced Caramel Macchiato": {
-        "mood": "tired",
-        "taste": "sweet",
-        "price": "high"    
+        "mood": 1,
+        "taste": 1,
+        "price": 1
     }
-
 }
