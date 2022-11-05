@@ -2,7 +2,6 @@ import json
 import os
 from os.path import dirname, join
 import sys
-import write
 
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -10,67 +9,52 @@ import delete_path
 import default_path as path
 
 data1 = {
-    "quiz": {
-        "sport": {
-            "q1": {
-                "question": "Which one is correct team name in NBA?",
-                "options": [
-                    "New York Bulls",
-                    "Los Angeles Kings",
-                    "Golden State Warriros",
-                    "Huston Rocket"
-                ],
-                "answer": "Huston Rocket"
-            }
-        },
-        "maths": {
-            "q1": {
-                "question": "5 + 7 = ?",
-                "options": [
-                    "10",
-                    "11",
-                    "12",
-                    "13"
-                ],
-                "answer": "12"
-            },
-            "q2": {
-                "question": "12 - 8 = ?",
-                "options": [
-                    "1",
-                    "2",
-                    "3",
-                    "4"
-                ],
-                "answer": "4"
-            }
-        }
+    "Dragonfruit": {
+        "mood": "happy",
+        "taste": "sweet",
+        "price": "moderate"    
     },
-	"test" : 5
+
+    "Black Tea": {
+        "mood": "tired",
+        "taste": "bitter",
+        "price": "low"    
+    }
 }
 
 data2 = {
-    "glossary": {
-        "title": "example glossary",
-		"GlossDiv": {
-            "title": "S",
-			"GlossList": {
-                "GlossEntry": {
-                    "ID": "SGML",
-					"SortAs": "SGML",
-					"GlossTerm": "Standard Generalized Markup Language",
-					"Acronym": "SGML",
-					"Abbrev": "ISO 8879:1986",
-					"GlossDef": {
-                        "para": "A meta-markup language, used to create markup languages such as DocBook.",
-						"GlossSeeAlso": ["GML", "XML"]
-                    },
-					"GlossSee": "markup"
-                }
-            }
-        }
+    "Irish Cold Brew": {
+        "mood": "tired",
+        "taste": "bitter",
+        "price": "low"    
+    },
+ 
+    "Caramel Frappuccino": {
+     "mood": "happy",
+     "taste": "sweet",
+     "price": "high"    
+    },
+ 
+    "Pink Drink": {
+     "mood": "happy",
+     "taste": "sour",
+     "price": "moderate"    
+    },
+ 
+    "Iced Espresso": {
+     "mood": "tired",
+     "taste": "bitter",
+     "price": "low"    
+    },
+
+    "Iced Caramel Macchiato": {
+        "mood": "tired",
+        "taste": "sweet",
+        "price": "high"    
     }
-}
+ 
+ 
+ }
 
 def add_file1(path):
     if os.path.exists(path):
@@ -96,12 +80,12 @@ def delete_nonexisting_data():
 def delete_existing_data1():
     init_test()
     path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save_test_3.json'),"r")
-    return delete_path.delete("quiz")
+    return delete_path.delete("Dragonfruit")
 
 def delete_existing_data2():
     init_test()
     path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save_test_3.json'),"r")
-    return delete_path.delete("test")
+    return delete_path.delete("Black Tea")
 
 def delete_nonexisting_data2():
     path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save_test_4.json'),"r")
@@ -110,22 +94,21 @@ def delete_nonexisting_data2():
 def delete_existing_data3():
     init_test()
     path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save_test_4.json'),"r")
-    return delete_path.delete("glossary")
+    return delete_path.delete("Pink Drink")
 
 def test_delete_nonexisting_data():
     assert delete_nonexisting_data() == None
 
 def test_delete_existing_data1():
-    assert delete_existing_data1().maths.q1.options[0] == "10"
+    assert delete_existing_data1().mood == "happy"
 def test_delete_exting_isting_data2():
-    assert delete_existing_data2() == 5  
+    assert delete_existing_data2().taste == "bitter"  
 
 def test_delete_nonexisting_data2():
     assert delete_nonexisting_data2() == None 
 
 def test_delete_existing_data3():
-    ret = delete_existing_data3() #.GlossDiv.title # == "S"
-    #retData = ret.to_dictionary()
-    #write.write("glossary", retData,join(dirname(dirname(dirname(__file__))), 'data', 'save_test_4.json'))
-    assert ret.GlossDiv.title == "S"
+    ret = delete_existing_data3() 
+
+    assert ret.price == "moderate"
     
