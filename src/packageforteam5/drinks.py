@@ -19,3 +19,7 @@ class Drink():
         self.mood = mood
         self.taste = taste
         self.price = price
+        
+
+def get():
+    return 0
