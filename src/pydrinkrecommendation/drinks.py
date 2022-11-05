@@ -20,6 +20,7 @@ class Drink():
         self.taste = taste
         self.price = price
         
+        
 
 def get():
     return 0
