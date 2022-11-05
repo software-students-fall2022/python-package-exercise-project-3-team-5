@@ -21,8 +21,8 @@ def get_recommendation(mood: Mood, taste: Taste, price: Price):
     
     #get all drinks that match the mood
     mood_filter = {k: v for k, v in data.items() if (mood == None or v["mood"] == mood)}
-    taste_filter = {k: v for k, v in mood_filter.items() if (taste == None or v["taste"] == taste)}
-    price_filter = {k: v for k, v in taste_filter.items() if (price == None or v["price"] == price)}
+    taste_filter = {k: v for k, v in data.items() if (taste == None or v["taste"] == taste)}
+    price_filter = {k: v for k, v in data.items() if (price == None or v["price"] == price)}
     
     #get the intersection of all drinks that match mood_filter, taste_filter, and price_filter
     intersection = set(mood_filter.keys()).intersection(set(taste_filter.keys())).intersection(set(price_filter.keys()))
@@ -31,6 +31,9 @@ def get_recommendation(mood: Mood, taste: Taste, price: Price):
     if len(intersection) != 0:
         result_dict = {k: v for k, v in data.items() if k in intersection}
     else:
+        if (len(mood_filter) == 0 and len(taste_filter) == 0 and len(price_filter) == 0):
+            return None
+            
         #if there is no intersection, get a random drink dict from mood_filter, taste_filter, and price_filter
         result_dict = random.choice([mood_filter, taste_filter, price_filter])
         while len(result_dict) == 0:
