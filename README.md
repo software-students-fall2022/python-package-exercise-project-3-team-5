@@ -9,7 +9,7 @@ A little exercise to create a Python package, build it, test it, distribute it, 
 
 
 ## Functions
-pydrinkrecommendation has 4 functions to help users get their daily drink recommendation: 
+`pydrinkrecommendation` has 4 functions to help users get their daily drink recommendation: 
 
 ### **Set Default Path for the Stored File**
 By default, all information about drinks is saved on ../data/save.json. But you can change the saved file's path:
@@ -97,12 +97,10 @@ This will return a random `Drink` object whose `Mood` is `Happy` **and** `Taste`
 <br>
 <br>
 
-## Installation
 
+## Installation & Use the package as a Module
 
-
-
-## How to use the package as a module
+## Example Project
 
 ## How to build and test this package
 1. Install [pipenv](https://packaging.python.org/en/latest/tutorials/managing-dependencies/#managing-dependencies) and [build](https://packaging.python.org/en/latest/tutorials/packaging-projects/#generating-distribution-archives) if not already installed.
@@ -116,10 +114,11 @@ This will return a random `Drink` object whose `Mood` is `Happy` **and** `Taste`
    ```
    python -m build
    ```
+
 # Contributors
 [Iris Qian](https://github.com/okkiris)\
 [Tim Chen](https://github.com/cty288)\
-[Ziyang Liao](https://github.com/ian-Liaozy)
-
+[Ziyang Liao](https://github.com/ian-Liaozy)\
+Shannon Huang
 
 
