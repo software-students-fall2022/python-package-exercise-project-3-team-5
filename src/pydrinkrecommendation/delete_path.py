@@ -19,7 +19,7 @@ def delete(key):
         object: the value of the key in the json file, or none if the key or the file does not exist
     """
 
-    p = path.DEFAULT_PATH_READ
+    p = path.DEFAULT_PATH
 
     if not os.path.exists(p):
         return None
