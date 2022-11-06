@@ -1,4 +1,4 @@
-import wisdom
+
 import loader
 import default_path
 import delete_path
@@ -11,4 +11,3 @@ def main():
   
 if __name__ == '__main__':
     main()
-

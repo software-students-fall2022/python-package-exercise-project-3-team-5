@@ -9,6 +9,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import loader
 import default_path
 
+
 def delete_file(path):
     if os.path.exists(path):
             os.remove(path)

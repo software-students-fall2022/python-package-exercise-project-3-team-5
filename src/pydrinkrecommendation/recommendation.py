@@ -5,7 +5,7 @@ import default_path as path
 from types import SimpleNamespace
 import warnings
 import logging
-from drinks import Mood, Taste, Price, Drink
+from  drinks import Mood, Taste, Price, Drink
 import random
 
 def get_recommendation(mood: Mood, taste: Taste, price: Price):
