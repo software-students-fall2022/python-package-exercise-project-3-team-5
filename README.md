@@ -36,6 +36,7 @@ This will create a Json file named "file.json" in "data" folder located in the p
 ### **Store a new drink**
 ```python
 import pydrinkrecommendation as rec
+from pydrinkrecommendation.drinks import Mood, Taste, Price, Drink
 
 rec.write(drink: Drink)
 ```
@@ -75,6 +76,7 @@ This will delete and return a `Drink` object whose name is "Cappuccino".
 ### **Get a Random Drink Recommendation**
 ```python
 import pydrinkrecommendation as rec
+from pydrinkrecommendation.drinks import Mood, Taste, Price, Drink
 
 rec.get_recommendation(mood: Mood, taste: Taste, price: Price)
 ```
