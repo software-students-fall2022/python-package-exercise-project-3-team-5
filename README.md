@@ -104,7 +104,18 @@ This will return a random `Drink` object whose `Mood` is `Happy` **and** `Taste`
 
 ## How to use the package as a module
 
-
+## How to build and test this package
+1. Install [pipenv](https://packaging.python.org/en/latest/tutorials/managing-dependencies/#managing-dependencies) and [build](https://packaging.python.org/en/latest/tutorials/packaging-projects/#generating-distribution-archives) if not already installed.
+2. Navigate to the root folder of this project (where `pyproject.toml` is located).
+3. Install `pytest` in a virtual environment
+4. Run the tests from the root directory. Tests files are located in `src/pydrinkrecommendation/tests` directory. Test Json files are located in `src/data` directory.
+   ```
+   python3 -m pytest
+   ```
+5. To build this project, run the following command from the root directory
+   ```
+   python -m build
+   ```
 # Contributors
 [Iris Qian](https://github.com/okkiris)\
 [Tim Chen](https://github.com/cty288)\
