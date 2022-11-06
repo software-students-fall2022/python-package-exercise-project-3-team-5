@@ -9,8 +9,8 @@ from drinks import Taste, Mood, Price
 import default_path
 import recommendation
 
-def setDefaultPath(path, operation="wr"):
-    default_path.setDefaultPath(path, operation)
+def setDefaultPath(path):
+    default_path.setDefaultPath(path)
     
 def get_recommendation(mood: Mood, taste: Taste, price: Price):
     return recommendation.get_recommendation(mood, taste, price)

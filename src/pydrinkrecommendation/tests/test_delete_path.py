@@ -63,26 +63,26 @@ def init_test():
 
 
 def delete_nonexisting_data():
-    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save.json'),"r")
+    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save.json'))
     print(delete_path.delete("test"))
 
 def delete_existing_data1():
     init_test()
-    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save_test_3.json'),"r")
+    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save_test_3.json'))
     return delete_path.delete("Irish Cold Brew")
 
 def delete_existing_data2():
     init_test()
-    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save_test_3.json'),"r")
+    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save_test_3.json'))
     return delete_path.delete("Iced Caramel Macchiato")
 
 def delete_nonexisting_data2():
-    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save_test_4.json'),"r")
+    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save_test_4.json'))
     return delete_path.delete("test")
 
 def delete_existing_data3():
     init_test()
-    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save_test_4.json'),"r")
+    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save_test_4.json'))
     return delete_path.delete("Caramel Frappuccino")
 
 def test_delete_nonexisting_data():
