@@ -16,7 +16,7 @@ def write(key, value, overridden_path=None):
     """
     
     if(overridden_path == None or overridden_path == ""):
-        overridden_path = path.DEFAULT_PATH_SAVE
+        overridden_path = path.DEFAULT_PATH
     
     if not os.path.exists(overridden_path):
         try:

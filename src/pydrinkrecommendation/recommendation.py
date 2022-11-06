@@ -9,7 +9,7 @@ from  drinks import Mood, Taste, Price, Drink
 import random
 
 def get_recommendation(mood: Mood, taste: Taste, price: Price):
-    overridden_path = path.DEFAULT_PATH_READ
+    overridden_path = path.DEFAULT_PATH
     if not os.path.exists(overridden_path):
         return logging.exception("The file for drinks does not exist!")
    

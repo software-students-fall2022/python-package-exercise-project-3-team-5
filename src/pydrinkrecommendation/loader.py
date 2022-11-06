@@ -34,7 +34,7 @@ def load(key, default_value=None, overridden_path=None):
         object: the value of the key in the json file, or the default value if the key or the file does not exist. Use dot notation "." to access nested values.
     """
     if(overridden_path == None or overridden_path == ""):
-        overridden_path = path.DEFAULT_PATH_READ
+        overridden_path = path.DEFAULT_PATH
     
     if not os.path.exists(overridden_path):
         warnings.warn('I got lost in the woods and could not find the file! I will fallback to the default value!')
