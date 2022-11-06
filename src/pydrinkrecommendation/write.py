@@ -5,7 +5,7 @@ import default_path as path
 from distutils.log import error
 from loader import NestedNamespace
 
-def write(key, value, overridden_path=None):
+def write(key, value):
     """_summary_
     Args:
         key (string): the key to add to json file 
@@ -14,16 +14,13 @@ def write(key, value, overridden_path=None):
     Returns:
         object: 0 if unsuccessful, 1 if successful
     """
-    
-    if(overridden_path == None or overridden_path == ""):
-        overridden_path = path.DEFAULT_PATH
-    
-    if not os.path.exists(overridden_path):
+    op_path = path.DEFAULT_PATH
+    if not os.path.exists(op_path):
         try:
-            dir = dirname(overridden_path)
+            dir = dirname(op_path)
             print("dir=", dir)
             os.makedirs(dir, exist_ok=True)
-            fp = open(overridden_path, 'w')
+            fp = open(op_path, 'w')
             fp.write('{}')
             fp.close()
         except:
@@ -31,10 +28,10 @@ def write(key, value, overridden_path=None):
     if(isinstance(value, NestedNamespace)):
         value = value.to_dictionary()
         
-    with open(overridden_path) as f:
+    with open(op_path) as f:
         data = json.load(f)
         data.update({key: value})
-    with open(overridden_path, "w") as outputFile:
+    with open(op_path, "w") as outputFile:
         json.dump(data, outputFile, indent=4)
         print("Key value pair added!")
         return 1

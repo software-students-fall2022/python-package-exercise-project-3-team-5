@@ -1,3 +1,7 @@
 {
-    "new value": 10
+    "test drink": {
+        "mood": 0,
+        "taste": 1,
+        "price": 1
+    }
 }

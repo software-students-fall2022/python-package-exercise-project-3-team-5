@@ -1,4 +1,3 @@
-import json
 import os
 from os.path import dirname, join
 import sys
@@ -7,60 +6,38 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import write
 import loader
-from loader import NestedNamespace
 import default_path as path
-import delete_path
 
 def delete_file(path):
     if os.path.exists(path):
          os.remove(path)
     
 def init_test():
-    t3 = join(dirname(dirname(dirname(__file__))), 'data', 'write_test_3.json')
-    delete_file(t3)
-    t4 = join(dirname(dirname(dirname(__file__))), 'data', 'write_test_4.json')
-    delete_file(t4)
+    t1 = join(dirname(dirname(dirname(__file__))), 'data', 'write_test_1.json')
+    delete_file(t1)
     t2 = join(dirname(dirname(dirname(__file__))), 'data', 'write_test_2.json')
-    delete_path.delete("new value")
-    t1 = join(dirname(dirname(dirname(__file__))), 'data', 'write_test.json')
-    write.write("new value", 1, t1)
-    write.write("quiz", {"sport":{"q1":{"question":"What is the capital of France?","options":["Paris","London","Berlin","Madrid"],"answer":"Paris"}}}, t1)
+    delete_file(t2)
+    # delete_path.delete("new value")
+    # test_file_path = join(dirname(dirname(dirname(__file__))), 'data', 'write_test.json')
     
-def write_valid_data():
-    init_test()
-    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'write_test.json'))
-    write.write("new value", 15)
-    newKey = loader.load("new value")
-    return newKey
+    # write.write("test drink", {"mood": 1, "taste": 1, "price": 1})
 
-def write_valid_data_with_existing_overridden_file():
+def write_non_exist_data():
     init_test()
-    p = join(dirname(dirname(dirname(__file__))), 'data', 'write_test_2.json')
-    write.write("new value", 10, p)
-    newKey = loader.load("new value", None, p)
+    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'write_test_1.json'))
+    write.write("test drink 2", {"mood": 1, "taste": 1, "price": 1})
+    newKey = loader.load("test drink 2")
     return newKey
 
 def write_nested_namespace():
     init_test()
-    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'write_test.json'))
-    value = loader.load("quiz")
-    value.sport.q1.question = "New Question"
-    write.write("quiz", value)
-    return loader.load("quiz").sport.q1.question
+    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'write_test_2.json'))
+    write.write("test drink", {"mood": 1, "taste": 1, "price": 1})
+    value = loader.load("test drink")
+    value.mood = 0
+    write.write("test drink", value)
+    return loader.load("test drink").mood
     
-def write_valid_data_with_nonexisting_default_file():
-    init_test()
-    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'write_test_3.json'))
-    write.write("new value", 10)
-    newKey = loader.load("new value")
-    return newKey
-
-def write_valid_data_with_nonexisting_overridden_file():
-    init_test()
-    p = join(dirname(dirname(dirname(__file__))), 'data', 'write_test_4.json')
-    write.write("new value", 10, p)
-    newKey = loader.load("new value", None, p)
-    return newKey
 
 
 
@@ -77,20 +54,14 @@ def load_existing_data_from_non_existing_file():
 '''
 
 
-def test_write_valid_data():
-    assert write_valid_data() == 15
-    
-def test_write_valid_data_with_existing_overridden_file():
-    assert write_valid_data_with_existing_overridden_file() == 10
-
+def test_write_non_exist_data():
+    dict_test = write_non_exist_data().to_dictionary()
+    mood, taste, price = dict_test['mood'], dict_test['taste'], dict_test['price']
+    assert mood == 1 and taste == 1 and price == 1
+test_write_non_exist_data()
 def test_write_nested_namespace():
-    assert write_nested_namespace() == "New Question"
+    assert write_nested_namespace() == 0
   
-def test_write_valid_data_with_nonexisting_default_file():
-    assert write_valid_data_with_nonexisting_default_file() == 10
-    
-def test_write_valid_data_with_nonexisting_overridden_file():
-    assert write_valid_data_with_nonexisting_overridden_file() == 10
 '''    
 def test_load_non_existing_data_from_existing_file():
     assert load_non_existing_data_from_existing_file() == None
