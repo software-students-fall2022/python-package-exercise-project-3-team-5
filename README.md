@@ -99,8 +99,6 @@ This will return a random `Drink` object whose `Mood` is `Happy` **and** `Taste`
 
 
 
-## Run package from command line
-
 
 ## How to use the package as a module
 
