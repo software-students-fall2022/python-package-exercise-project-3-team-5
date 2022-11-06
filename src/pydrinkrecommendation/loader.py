@@ -1,7 +1,7 @@
 import json
 import os
 from os.path import dirname, join
-import default_path as path
+import  default_path as path
 from types import SimpleNamespace
 import warnings
 #reference: https://stackoverflow.com/questions/16279212/how-to-use-dot-notation-for-dict-in-python

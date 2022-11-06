@@ -5,7 +5,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from types import SimpleNamespace
-import loader
+
 import recommendation
 import default_path as path
 from drinks import Mood, Taste, Price
