@@ -28,7 +28,8 @@ pydrinkrecommendation has 4 functions to help users get their daily drink recomm
 
 # Contributors
 [Iris Qian](https://github.com/okkiris)
-
+[Tim Chen](https://github.com/cty288)
+[Ziyang Liao](https://github.com/ian-Liaozy)
 
 
 
