@@ -4,3 +4,32 @@
 # Python Package Exercise
 
 A little exercise to create a Python package, build it, test it, distribute it, and use it. See [instructions](./instructions.md) for details.
+
+# pydrinkrecommendation - Recommend daily drink
+
+
+## Functions
+pydrinkrecommendation has 4 functions to help users get their daily drink recommendation: 
+    
+    1. recommendation(mood, taste, price) : print a recommended drink that matches the arguments
+    2. write(): add a new drink info into the json file 
+    3. delete_path(key) : delete an existing drink by its name(key) in the json file
+    4. default_path(path, operation="wr") : set a default path for the json file
+
+## Installation
+
+
+
+## Run package from command line
+
+
+## How to use the package as a module
+
+
+# Contributors
+[Iris Qian](https://github.com/okkiris)
+[Tim Chen](https://github.com/cty288)
+[Ziyang Liao](https://github.com/ian-Liaozy)
+
+
+
