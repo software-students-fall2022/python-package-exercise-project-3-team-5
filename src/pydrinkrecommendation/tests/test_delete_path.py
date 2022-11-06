@@ -7,7 +7,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import delete_path
 import default_path as path
-
+from  drinks import Mood, Taste, Price, Drink
 data1 = {
     "Irish Cold Brew": {
         "mood": 0,
@@ -89,9 +89,9 @@ def test_delete_nonexisting_data():
     assert delete_nonexisting_data() == None
 
 def test_delete_existing_data1():
-    assert delete_existing_data1().mood == 0
+    assert delete_existing_data1().mood == Mood.Tired
 def test_delete_exting_isting_data2():
-    assert delete_existing_data2().taste == 1
+    assert delete_existing_data2().taste == Taste.Sweet
 
 def test_delete_nonexisting_data2():
     assert delete_nonexisting_data2() == None 
@@ -99,5 +99,5 @@ def test_delete_nonexisting_data2():
 def test_delete_existing_data3():
     ret = delete_existing_data3() 
 
-    assert ret.price == 2
+    assert ret.price == Price.High
     

@@ -4,7 +4,7 @@ from os.path import dirname, join
 import default_path as path
 import warnings
 from loader import NestedNamespace
-
+from  drinks import Mood, Taste, Price, Drink
 
                
 def delete(key):
@@ -39,9 +39,9 @@ def delete(key):
                     
                 if(value == None):
                      return None
-                if(not isinstance(value, dict)):
-                        return value
-                return NestedNamespace(value)
+                
+                return Drink(key, value['mood'], value['taste'], value['price'])
+
         warnings.warn("Error! No such key exists.")
         return None
     
