@@ -3,10 +3,10 @@ from os.path import dirname, join
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-
 import write
 import loader
 import default_path as path
+from drinks import Drink
 
 def delete_file(path):
     if os.path.exists(path):
@@ -17,58 +17,43 @@ def init_test():
     delete_file(t1)
     t2 = join(dirname(dirname(dirname(__file__))), 'data', 'write_test_2.json')
     delete_file(t2)
-    # delete_path.delete("new value")
-    # test_file_path = join(dirname(dirname(dirname(__file__))), 'data', 'write_test.json')
-    
-    # write.write("test drink", {"mood": 1, "taste": 1, "price": 1})
 
-def write_non_exist_data():
+def write_drink_to_non_existing_file():
     init_test()
     path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'write_test_1.json'))
-    write.write("test drink 2", {"mood": 1, "taste": 1, "price": 1})
-    newKey = loader.load("test drink 2")
-    return newKey
+    testDrink1 = Drink("test drink 1", 0, 1, 2)
+    write.write(testDrink1)
+    testDrink1Properties = loader.load("test drink 1")
+    return testDrink1Properties
 
-def write_nested_namespace():
+def write_new_drink_to_existing_file():
     init_test()
     path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'write_test_2.json'))
-    write.write("test drink", {"mood": 1, "taste": 1, "price": 1})
-    value = loader.load("test drink")
-    value.mood = 0
-    write.write("test drink", value)
-    return loader.load("test drink").mood
-    
+    testDrink2 = Drink("test drink 2", 1, 0, 1)
+    write.write(testDrink2)
+    testDrink2Properties = loader.load("test drink 2")
+    return testDrink2Properties
 
+def write_existing_drink_to_existing_file():
+    path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'write_test_3.json'))
+    testDrink3 = Drink("test drink 3", 1, 1, 1)
+    write.write(testDrink3)
+    updatedTestDrink3 = Drink("test drink 3", 1, 0, 1)
+    write.write(updatedTestDrink3)
+    testDrink3Properties = loader.load("test drink 3")
+    return testDrink3Properties
 
+def test_write_drink_to_non_existing_file():
+    dict_test1 = write_drink_to_non_existing_file().to_dictionary()
+    mood, taste, price = dict_test1['mood'], dict_test1['taste'], dict_test1['price']
+    assert mood == 0 and taste == 1 and price == 2
 
-'''  
-def load_default_value_from_non_existing_data():
-   
-    path.setDefaultPath("r", join(dirname(dirname(__file__)), 'data', 'non-save_test.json'))
-    quiz = loader.load("non-exist-2", 100)
-    return quiz
+def test_write_new_drink_to_existing_file():
+    dict_test2 = write_new_drink_to_existing_file().to_dictionary()
+    mood, taste, price = dict_test2['mood'], dict_test2['taste'], dict_test2['price']
+    assert mood == 1 and taste == 0 and price == 1
 
-def load_existing_data_from_non_existing_file():
-    quiz = loader.load("quiz", None, join(dirname(dirname(__file__)), 'data', 'non-save_test.json'))
-    return quiz
-'''
-
-
-def test_write_non_exist_data():
-    dict_test = write_non_exist_data().to_dictionary()
-    mood, taste, price = dict_test['mood'], dict_test['taste'], dict_test['price']
-    assert mood == 1 and taste == 1 and price == 1
-test_write_non_exist_data()
-def test_write_nested_namespace():
-    assert write_nested_namespace() == 0
-  
-'''    
-def test_load_non_existing_data_from_existing_file():
-    assert load_non_existing_data_from_existing_file() == None
-    
-def test_load_default_value_from_non_existing_data():
-    assert load_default_value_from_non_existing_data() == 100
-    
-def test_load_existing_data_from_non_existing_file():
-    assert load_existing_data_from_non_existing_file() == None
-'''
+def test_existing_new_drink_to_existing_file():
+    dict_test3 = write_existing_drink_to_existing_file().to_dictionary()
+    mood, taste, price = dict_test3['mood'], dict_test3['taste'], dict_test3['price']
+    assert mood == 1 and taste == 0 and price == 1
