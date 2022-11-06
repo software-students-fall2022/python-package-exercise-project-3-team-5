@@ -9,52 +9,41 @@ import delete_path
 import default_path as path
 
 data1 = {
-    "Dragonfruit": {
-        "mood": "happy",
-        "taste": "sweet",
-        "price": "moderate"    
+    "Irish Cold Brew": {
+        "mood": 0,
+        "taste": 0,
+        "price": 0
     },
-
-    "Black Tea": {
-        "mood": "tired",
-        "taste": "bitter",
-        "price": "low"    
+    "Caramel Frappuccino": {
+        "mood": 1,
+        "taste": 1,
+        "price": 2
+    },
+    "Iced Espresso": {
+        "mood": 0,
+        "taste": 0,
+        "price": 1
+    },
+    "Iced Caramel Macchiato": {
+        "mood": 1,
+        "taste": 1,
+        "price": 1
     }
 }
 
 data2 = {
     "Irish Cold Brew": {
-        "mood": "tired",
-        "taste": "bitter",
-        "price": "low"    
+        "mood": 0,
+        "taste": 0,
+        "price": 0
     },
- 
     "Caramel Frappuccino": {
-     "mood": "happy",
-     "taste": "sweet",
-     "price": "high"    
-    },
- 
-    "Pink Drink": {
-     "mood": "happy",
-     "taste": "sour",
-     "price": "moderate"    
-    },
- 
-    "Iced Espresso": {
-     "mood": "tired",
-     "taste": "bitter",
-     "price": "low"    
-    },
-
-    "Iced Caramel Macchiato": {
-        "mood": "tired",
-        "taste": "sweet",
-        "price": "high"    
+        "mood": 1,
+        "taste": 1,
+        "price": 2
     }
- 
- 
- }
+
+}
 
 def add_file1(path):
     if os.path.exists(path):
@@ -80,12 +69,12 @@ def delete_nonexisting_data():
 def delete_existing_data1():
     init_test()
     path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save_test_3.json'),"r")
-    return delete_path.delete("Dragonfruit")
+    return delete_path.delete("Irish Cold Brew")
 
 def delete_existing_data2():
     init_test()
     path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save_test_3.json'),"r")
-    return delete_path.delete("Black Tea")
+    return delete_path.delete("Iced Caramel Macchiato")
 
 def delete_nonexisting_data2():
     path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save_test_4.json'),"r")
@@ -94,15 +83,15 @@ def delete_nonexisting_data2():
 def delete_existing_data3():
     init_test()
     path.setDefaultPath(join(dirname(dirname(dirname(__file__))), 'data', 'save_test_4.json'),"r")
-    return delete_path.delete("Pink Drink")
+    return delete_path.delete("Caramel Frappuccino")
 
 def test_delete_nonexisting_data():
     assert delete_nonexisting_data() == None
 
 def test_delete_existing_data1():
-    assert delete_existing_data1().mood == "happy"
+    assert delete_existing_data1().mood == 0
 def test_delete_exting_isting_data2():
-    assert delete_existing_data2().taste == "bitter"  
+    assert delete_existing_data2().taste == 1
 
 def test_delete_nonexisting_data2():
     assert delete_nonexisting_data2() == None 
@@ -110,5 +99,5 @@ def test_delete_nonexisting_data2():
 def test_delete_existing_data3():
     ret = delete_existing_data3() 
 
-    assert ret.price == "moderate"
+    assert ret.price == 2
     
