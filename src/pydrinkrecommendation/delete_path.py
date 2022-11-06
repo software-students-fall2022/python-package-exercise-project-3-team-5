@@ -7,7 +7,7 @@ from loader import NestedNamespace
 
 
                
-def delete(key, overridden_path=None):
+def delete(key):
     """_summary_
 
     Args:
@@ -18,13 +18,12 @@ def delete(key, overridden_path=None):
     Returns:
         object: the value of the key in the json file, or none if the key or the file does not exist
     """
-    if (overridden_path == None or overridden_path == ""):
-        overridden_path = path.DEFAULT_PATH_READ
-    print("Default", overridden_path)
-    print("Default2", path.DEFAULT_PATH_READ)
-    if not os.path.exists(overridden_path):
+
+    p = path.DEFAULT_PATH_READ
+
+    if not os.path.exists(p):
         return None
-    with open(overridden_path) as f:
+    with open(p) as f:
         try:
             data = json.load(f)
         except:
@@ -35,7 +34,7 @@ def delete(key, overridden_path=None):
             if key == k:
                 data.pop(key)
                 print("Successfully delete: ",key)
-                with open(overridden_path,'w') as file:
+                with open(p,'w') as file:
                     file.write(json.dumps(data, indent=4))
                     
                 if(value == None):
