@@ -33,14 +33,17 @@ This will create a Json file named "file.json" in "data" folder located in the p
 <br>\
 <br>
 
-### **Store a new drink**
+### **Store and Update a Drink**
 ```python
 import pydrinkrecommendation as rec
 from pydrinkrecommendation.drinks import Mood, Taste, Price, Drink
 
 rec.write(drink: Drink)
 ```
-This will store a drink (an object of type Drink) to the default file path.\
+This will store a drink (an object of type `Drink`) to the default file path.\
+If the dafault file already contains a drink of the same name, then this will update that drink to the input properties.
+
+\
 For example:
 ```python
 import pydrinkrecommendation as rec

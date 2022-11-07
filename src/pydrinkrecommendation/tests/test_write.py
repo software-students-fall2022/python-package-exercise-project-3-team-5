@@ -7,6 +7,7 @@ import write
 import loader
 import default_path as path
 from drinks import Drink
+import delete_path
 
 def delete_file(path):
     if os.path.exists(path):
@@ -16,7 +17,8 @@ def init_test():
     t1 = join(dirname(dirname(dirname(__file__))), 'data', 'write_test_1.json')
     delete_file(t1)
     t2 = join(dirname(dirname(dirname(__file__))), 'data', 'write_test_2.json')
-    delete_file(t2)
+    path.setDefaultPath(t2)
+    delete_path.delete("test drink 2")
 
 def write_drink_to_non_existing_file():
     init_test()
@@ -44,9 +46,10 @@ def write_existing_drink_to_existing_file():
     return testDrink3Properties
 
 def test_write_drink_to_non_existing_file():
-    dict_test1 = write_drink_to_non_existing_file().to_dictionary()
-    mood, taste, price = dict_test1['mood'], dict_test1['taste'], dict_test1['price']
-    assert mood == 0 and taste == 1 and price == 2
+    dict_test1 = write_drink_to_non_existing_file()
+    
+    #mood, taste, price = dict_test1['mood'], dict_test1['taste'], dict_test1['price']
+    assert dict_test1.mood == 0 and dict_test1.taste == 1 and dict_test1.price == 2
 
 def test_write_new_drink_to_existing_file():
     dict_test2 = write_new_drink_to_existing_file().to_dictionary()
