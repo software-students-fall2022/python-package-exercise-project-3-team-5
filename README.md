@@ -157,6 +157,6 @@ An example project using this package can be found [here](https://github.com/cty
 [Iris Qian](https://github.com/okkiris)\
 [Tim Chen](https://github.com/cty288)\
 [Ziyang Liao](https://github.com/ian-Liaozy)\
-Shannon Huang
+[Shannon Huang](https://github.com/shannonh800)\
 
 
