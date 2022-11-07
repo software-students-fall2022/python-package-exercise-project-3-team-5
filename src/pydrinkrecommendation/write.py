@@ -17,7 +17,7 @@ def write(drink: Drink):
     if not os.path.exists(op_path):
         try:
             dir = dirname(op_path)
-            print("dir=", dir)
+            #print("dir=", dir)
             os.makedirs(dir, exist_ok=True)
             fp = open(op_path, 'w')
             fp.write('{}')
