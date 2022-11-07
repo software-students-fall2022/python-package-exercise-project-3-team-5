@@ -102,7 +102,33 @@ This will return a random `Drink` object whose `Mood` is `Happy` **and** `Taste`
 
 
 ## Installation & Use the package as a Module
+1. Install [pipenv](https://packaging.python.org/en/latest/tutorials/managing-dependencies/#managing-dependencies)
+   
+2. Create a `pipenv`-managed virtual environment and install the latest version of your package installed: 
+   ```
+   python3 -m pipenv install -i https://test.pypi.org/simple/pydrinkmanagment
+   ``` 
+   (Note that if you've previously created a `pipenv` virtual environment in the same directory, you may have to delete the old one first. Find out where it is located with the `pipenv --venv` command.)
+3. Activate the virtual environment and enter the virtual environment's shell:
+   ```
+   python -m pipenv shell
+   ```
+4. Find out where your virtual environment is located:
+   ```
+    python3 -m pipenv --venv
+   ``` 
+5. The package is now installed in this virtual environment. Navigate to that virtual environment, and create your own Python program file that imports this package and use it. Example:
+   ``` python
+   import pydrinkrecommendation as rec
+   from pydrinkrecommendation.drinks import Mood, Taste, Price, Drink
 
+   rec.get_recommendation(Mood.Happy, Taste.Sweet, None)
+   ```
+6. Inside your `pipenv` shell, you need to run commands like the following command in order to launch your project:
+    ```
+    python3 -m pipenv run python src/__main__.py
+    ```
+7. Exit the virtual environment: `exit`
 <br>
 <br>
 
