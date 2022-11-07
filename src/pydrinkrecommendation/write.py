@@ -4,15 +4,14 @@ from os.path import dirname, join
 import default_path as path
 from distutils.log import error
 from loader import NestedNamespace
+from  drinks import Drink
 
-def write(key, value):
+def write(drink: Drink):
     """_summary_
     Args:
-        key (string): the key to add to json file 
-        value (string, number): the value associated with given key to write to given json file
-        path (string, optional): the path of the saved Json file to use. Defaults to DEFAULT_PATH.
+        drink: a Drink object that contains a drink name, as well as the drink's properties (mood, taste, price)
     Returns:
-        object: 0 if unsuccessful, 1 if successful
+        None
     """
     op_path = path.DEFAULT_PATH
     if not os.path.exists(op_path):
@@ -25,13 +24,11 @@ def write(key, value):
             fp.close()
         except:
             return error
-    if(isinstance(value, NestedNamespace)):
-        value = value.to_dictionary()
         
     with open(op_path) as f:
         data = json.load(f)
-        data.update({key: value})
+        data.update({drink.name: {"mood": drink.mood, "taste": drink.taste, "price": drink.price}})
+        print(data)
     with open(op_path, "w") as outputFile:
         json.dump(data, outputFile, indent=4)
         print("Key value pair added!")
-        return 1
