@@ -7,6 +7,8 @@ A little exercise to create a Python package, build it, test it, distribute it, 
 
 # pydrinkrecommendation - Recommend daily drink
 
+## Package Link
+Our package can be found [Here](https://test.pypi.org/project/pydrinkmanagment/)
 
 ## Functions
 `pydrinkrecommendation` has 4 functions to help users get their daily drink recommendation: 
