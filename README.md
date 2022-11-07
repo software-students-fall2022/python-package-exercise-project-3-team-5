@@ -103,7 +103,14 @@ This will return a random `Drink` object whose `Mood` is `Happy` **and** `Taste`
 
 ## Installation & Use the package as a Module
 
+<br>
+<br>
+
 ## Example Project
+An example project using this package can be found [here](https://github.com/cty288/pydrinkrecommendation-example). Please follow the instructions in the project's `README.md` file to run this project.
+<br>
+<br>
+
 
 ## How to build and test this package
 1. Install [pipenv](https://packaging.python.org/en/latest/tutorials/managing-dependencies/#managing-dependencies) and [build](https://packaging.python.org/en/latest/tutorials/packaging-projects/#generating-distribution-archives) if not already installed.
