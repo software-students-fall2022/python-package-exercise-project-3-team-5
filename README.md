@@ -108,7 +108,7 @@ This will return a random `Drink` object whose `Mood` is `Happy` **and** `Taste`
    
 2. Create a `pipenv`-managed virtual environment and install the latest version of your package installed: 
    ```
-   python3 -m pipenv install -i https://test.pypi.org/simple/pydrinkmanagment
+   python3 -m pipenv install -i https://test.pypi.org/simple/ pydrinkmanagment
    ``` 
    (Note that if you've previously created a `pipenv` virtual environment in the same directory, you may have to delete the old one first. Find out where it is located with the `pipenv --venv` command.)
 3. Activate the virtual environment and enter the virtual environment's shell:
@@ -157,6 +157,6 @@ An example project using this package can be found [here](https://github.com/cty
 [Iris Qian](https://github.com/okkiris)\
 [Tim Chen](https://github.com/cty288)\
 [Ziyang Liao](https://github.com/ian-Liaozy)\
-[Shannon Huang](https://github.com/shannonh800)\
+[Shannon Huang](https://github.com/shannonh800)
 
 
