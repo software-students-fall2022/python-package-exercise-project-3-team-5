@@ -5,10 +5,11 @@ import os
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from drinks import Taste, Mood, Price
+from drinks import Taste, Mood, Price, Drink
 import default_path
 import recommendation
 import delete_path
+import write
 
 def setDefaultPath(path):
     default_path.setDefaultPath(path)
@@ -18,3 +19,6 @@ def get_recommendation(mood: Mood, taste: Taste, price: Price):
 
 def delete_drink(drink_name):
     return delete_path.delete(drink_name)
+
+def write_drink(drink: Drink):
+    write.write(drink)

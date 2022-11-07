@@ -38,7 +38,7 @@ This will create a Json file named "file.json" in "data" folder located in the p
 import pydrinkrecommendation as rec
 from pydrinkrecommendation.drinks import Mood, Taste, Price, Drink
 
-rec.write(drink: Drink)
+rec.write_drink(drink: Drink)
 ```
 This will store a drink (an object of type `Drink`) to the default file path.\
 If the dafault file already contains a drink of the same name, then this will update that drink to the input properties.
@@ -50,7 +50,7 @@ import pydrinkrecommendation as rec
 from pydrinkrecommendation.drinks import Mood, Taste, Price, Drink
 
 
-rec.write(Drink(name="New Drink", mood = Mood.Happy, taste = Taste.Sweet, price = Price.Low))
+rec.write_drink(Drink(name="New Drink", mood = Mood.Happy, taste = Taste.Sweet, price = Price.Low))
 ```
 This will write a new drink names "New Drink" with corresponding properties to the default Json file.
 

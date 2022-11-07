@@ -28,7 +28,7 @@ def write(drink: Drink):
     with open(op_path) as f:
         data = json.load(f)
         data.update({drink.name: {"mood": drink.mood, "taste": drink.taste, "price": drink.price}})
-        print(data)
+        
     with open(op_path, "w") as outputFile:
         json.dump(data, outputFile, indent=4)
-        print("Key value pair added!")
+        print("Drink Updated!")
