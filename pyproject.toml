@@ -8,9 +8,8 @@ description = "A package that saves & loads drink datas, and recommend drinks ba
 version = "0.2"
 authors = [
   { name="Ziyang Liao", email="zl3057@nyu.edu" },
-  { name="Tim Chen", email="tc3158@nyu.edu" }
-  { name="Iris Qian, email="pq286@nyu.edu"}
-  {name="Shannon Huang", email=}
+  { name="Tim Chen", email="tc3158@nyu.edu" },
+  { name="Iris Qian", email="pq286@nyu.edu"}
 ]
 license = { file = "LICENSE" }
 readme = "README.md"
