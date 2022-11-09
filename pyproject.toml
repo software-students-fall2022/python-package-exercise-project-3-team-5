@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pydrinkmanagment"
+description = "A package that saves & loads drink datas, and recommend drinks based on user's preference"
+version = "0.2"
+authors = [
+  { name="Ziyang Liao", email="zl3057@nyu.edu" },
+  { name="Tim Chen", email="tc3158@nyu.edu" },
+  { name="Iris Qian", email="pq286@nyu.edu"},
+  { name="Shannon Huang", email="sh5572@nyu.edu"}
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+keywords = ["python", "drink", "recommendation"]
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+]
+
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.urls]
+"Homepage" = "https://github.com/software-students-fall2022/python-package-exercise-project-3-team-5"
+"Repository" = "https://github.com/software-students-fall2022/python-package-exercise-project-3-team-5.git"
+"Bug Tracker" = "https://github.com/software-students-fall2022/python-package-exercise-project-3-team-5/issues"
+
+[project.scripts]
+drinks = "drinks.__main__:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+namespaces = true
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = ["*.txt", "*.json"]

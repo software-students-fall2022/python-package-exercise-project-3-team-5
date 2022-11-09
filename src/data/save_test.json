@@ -1,0 +1,22 @@
+{
+    "Irish Cold Brew": {
+        "mood": 0,
+        "taste": 0,
+        "price": 0
+    },
+    "Caramel Frappuccino": {
+        "mood": 1,
+        "taste": 1,
+        "price": 2
+    },
+    "Iced Espresso": {
+        "mood": 0,
+        "taste": 0,
+        "price": 1
+    },
+    "Iced Caramel Macchiato": {
+        "mood": 1,
+        "taste": 1,
+        "price": 1
+    }
+}
